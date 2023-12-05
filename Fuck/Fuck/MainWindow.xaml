@@ -1,0 +1,18 @@
+﻿<Window x:Class="Fuck.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fuck"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+
+        <Button Content="Button"  Height="94"  Width="217" Click="Button_Click" Margin="69,292,506,33"/>
+        <TextBox x:Name="Login"  Height="35"  TextWrapping="Wrap" Width="217" Margin="50,167,524,217"/>
+        <TextBox x:Name="Password"  Height="35"  TextWrapping="Wrap"  Width="217" Margin="288,167,287,217"/>
+        <Label Content="Login" Height="25" Width="217" Margin="50,119,525,275"/>
+        <Label Content="Password"  Height="25"  Width="217" Margin="305,119,270,275"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,32 @@
+﻿<Window x:Name="Cashier1" x:Class="Fuck.Cashier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fuck"
+        mc:Ignorable="d"
+        Title="Cashier" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="Youre Login -" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="86"/>
+        <Label x:Name="workerIDlabel" Content="Label" HorizontalAlignment="Left" Height="25" Margin="101,10,0,0" VerticalAlignment="Top" Width="60"/>
+        <ComboBox x:Name="BoxCoffee"   HorizontalAlignment="Left" Height="25" Margin="10,90,0,0" VerticalAlignment="Top" Width="150" FontSize="14" SelectionChanged="BoxCoffee_SelectionChanged" />
+        <Label Content="coffee" HorizontalAlignment="Left" Height="23" Margin="11,68,0,0" VerticalAlignment="Top" Width="150"/>
+        <ListBox x:Name="Order" HorizontalAlignment="Left" Height="250" Margin="632,68,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="Order_SelectionChanged"/>
+        <Label Content="Заказ" HorizontalAlignment="Left" Margin="632,42,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
+        <Label Content="Итого-" HorizontalAlignment="Left" Margin="632,323,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
+        <Label x:Name="OrderSum" Content="0" HorizontalAlignment="Left" Margin="687,323,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
+        <Button x:Name="CreateOrder" Content="Create order" HorizontalAlignment="Left" Height="53" Margin="630,356,0,0" VerticalAlignment="Top" Width="152" Click="CreateOrder_Click"/>
+        <Label Content="desert" HorizontalAlignment="Left" Height="23" Margin="190,68,0,0" VerticalAlignment="Top" Width="150"/>
+        <Label Content="sauce" HorizontalAlignment="Left" Height="23" Margin="376,68,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="BoxDesert" HorizontalAlignment="Left" Height="25" Margin="190,90,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="BoxDesert_SelectionChanged"/>
+        <ComboBox x:Name="BoxSauce" HorizontalAlignment="Left" Height="27" Margin="376,88,0,0" VerticalAlignment="Top" Width="145" SelectionChanged="BoxSauce_SelectionChanged"/>
+        <Label Content="snack" HorizontalAlignment="Left" Height="23" Margin="11,229,0,0" VerticalAlignment="Top" Width="150"/>
+        <ComboBox x:Name="BoxSnack" HorizontalAlignment="Left" Height="25" Margin="10,257,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="BoxSnack_SelectionChanged"/>
+        <Button x:Name="AddCoffee" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="11,120,0,0" VerticalAlignment="Top" Width="150" Click="AddCoffee_Click"/>
+        <Button x:Name="AddDesert" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="190,120,0,0" VerticalAlignment="Top" Width="150" Click="AddDesert_Click"/>
+        <Button x:Name="AddSauce" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="376,120,0,0" VerticalAlignment="Top" Width="150" Click="AddSauce_Click"/>
+        <Button x:Name="AddSnack" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="10,287,0,0" VerticalAlignment="Top" Width="150" Click="AddSnack_Click"/>
+
+
+    </Grid>
+</Window>
