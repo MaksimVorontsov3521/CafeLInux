@@ -21,17 +21,22 @@ namespace Fuck
     /// Логика взаимодействия для Storage.xaml
     /// </summary>
     public partial class Storage : Window
-    {
+    {// Создание необходимых переменных с областью видимости в пределах класса
         DishesFromMenu DFM = new DishesFromMenu();
         List<string> listOrder = new List<string>();
         private string IDVAN = "";
         private string ingrediance;
-        private string[] ingmass;
+        private string[] ingmass; 
+        private int[] count;
+        private int selectedID;
         public Storage(string role)
         {
             InitializeComponent();
+            // Login пользователя
             workerIDlabel.Content = role;
-            Vans.ItemsSource = DFM.FillVans();          
+            // Список фургонов
+            Vans.ItemsSource = DFM.FillVans(); 
+            // Список ингридиентов
             ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
             ingmass = ingrediance.Split(',');
             Foodstuff.ItemsSource = ingmass;
@@ -42,7 +47,7 @@ namespace Fuck
         {
 
         }
-
+        // Выбор фургона
         private void Vans_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Van_id.Content = Vans.SelectedItem.ToString();
@@ -51,11 +56,13 @@ namespace Fuck
             Refresh();
             
         }
+        // Обновление списка
         private void Refresh()
         {
             Foodstuff.ItemsSource = combine();
         }
-        private int[] count;
+        
+        // Метод для сложения строк
         private string[] combine()
         {
             string[] combined = new string[ingmass.Length];
@@ -66,12 +73,12 @@ namespace Fuck
             }
             return combined;
         }
-        private int selectedID;
+        // Изменение фургона
         private void Foodstuff_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedID = (int)Foodstuff.SelectedIndex;
         }
-        
+        // Изменение количества продуктов 
         private void Сhange_Click(object sender, RoutedEventArgs e)
         {
             count[selectedID] = Convert.ToInt32(Quantity.Text);

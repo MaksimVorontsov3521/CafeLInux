@@ -11,7 +11,7 @@
         <Label x:Name="workerIDlabel" Content="Label" HorizontalAlignment="Left" Height="25" Margin="101,10,0,0" VerticalAlignment="Top" Width="60"/>
         <ComboBox x:Name="BoxCoffee"   HorizontalAlignment="Left" Height="25" Margin="10,90,0,0" VerticalAlignment="Top" Width="150" FontSize="14" SelectionChanged="BoxCoffee_SelectionChanged" />
         <Label Content="coffee" HorizontalAlignment="Left" Height="23" Margin="11,68,0,0" VerticalAlignment="Top" Width="150"/>
-        <ListBox x:Name="Order" HorizontalAlignment="Left" Height="250" Margin="632,68,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="Order_SelectionChanged"/>
+        <ListBox x:Name="Order" HorizontalAlignment="Left" Height="250" Margin="632,68,0,0" VerticalAlignment="Top" Width="150"/>
         <Label Content="Заказ" HorizontalAlignment="Left" Margin="632,42,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
         <Label Content="Итого-" HorizontalAlignment="Left" Margin="632,323,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
         <Label x:Name="OrderSum" Content="0" HorizontalAlignment="Left" Margin="687,323,0,0" VerticalAlignment="Top" Width="50" Height="25"/>

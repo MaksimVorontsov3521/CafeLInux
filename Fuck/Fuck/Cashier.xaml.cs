@@ -11,24 +11,30 @@ namespace Fuck
     /// Логика взаимодействия для Cashier.xaml
     /// </summary>
     public partial class Cashier : Window
-    {
+    {// Создание необходимых переменных с областью видимости в пределах класса
         List<string> listOrder = new List<string>();
         private OleDbConnection sqlConnection = null;
         DishesFromMenu DFM = new DishesFromMenu();
-        public string ingrediance;
-        public string[] ingmass;
+        private string ingrediance;
+        private string[] ingmass;
+        Orders Orders = new Orders();
         public Cashier(string role)
         {
             InitializeComponent();
+            // Login пользователя
             workerIDlabel.Content = role;
+            // Открытие окна заказов
             Orders.Show();
+            // Получение списка продуктов из БД в string и string[]
             ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
             ingmass = ingrediance.Split(',');
+            // Заполнение ComboBox с категориями товаров
             BoxSauce.ItemsSource = combine(DFM.FillBox("Dish", "sauce",6), DFM.FillBox("Price", "sauce",0));
             BoxCoffee.ItemsSource = combine(DFM.FillBox("Dish", "Coffee", 7), DFM.FillBox("Price", "Coffee", 0));
             BoxDesert.ItemsSource = combine(DFM.FillBox("Dish", "dessert",8), DFM.FillBox("Price", "dessert",0));
             BoxSnack.ItemsSource = combine(DFM.FillBox("Dish", "snack", 6), DFM.FillBox("Price", "snack", 0));
         }
+        // Метод для сложения строк
         private List<string> combine(List<string> one, List<string> two)
         {
             List<string> combined = new List<string>();
@@ -44,7 +50,7 @@ namespace Fuck
             sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);
             sqlConnection.Open();
         }
-
+        // Метод для подсчёта суммы заказа 
         public void addtosum(string item)
         {
             listOrder.Add(item.Remove(6));
@@ -71,6 +77,7 @@ namespace Fuck
 
         private void CreateOrder_Click(object sender, RoutedEventArgs e)
         {
+            // Метод находит количество продуктов необходимых для заказа
             int[] order = new int[ingmass.Length];
             string query;
             string dynamicCondition;
@@ -97,6 +104,7 @@ namespace Fuck
             }
             RemoveFromVan(order);
         }
+        // Метод находит количество  продуктов в фургоне пользователя и номер заказа
         private void RemoveFromVan(int[] order)
         {
             int count = 0;
@@ -121,7 +129,8 @@ namespace Fuck
             }
             UpDate(order, van, count);
         }
-        Orders Orders = new Orders();
+
+        //Метод обновляет продукты в фургоне, отправляет заказ в ожидание и очищает поля для нового заказа
         private void UpDate(int[] order, int[] van, int count)
         {
             count++;
@@ -141,10 +150,7 @@ namespace Fuck
             allsum = 0;
         }
 
-        private void Order_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        // Метод проверяет выбранный товар и добавляет его в заказ
         private void BoxSelect(ComboBox box)
         {
             object item = box.SelectedItem;
@@ -158,6 +164,7 @@ namespace Fuck
                 addtosum(item.ToString());
             }
         }
+        // методы для добавление товаров в заказ
         private void BoxCoffee_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
                 BoxSelect(BoxCoffee);
@@ -190,5 +197,6 @@ namespace Fuck
         {
                 BoxSelect(BoxSnack);
         }
+        //
     }
 }

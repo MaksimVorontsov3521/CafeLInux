@@ -18,8 +18,8 @@ namespace Fuck
         {
             sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);            
             sqlConnection.Open();
-        }            
-
+        }
+        // Заполнение comboBox товарами по категориям
         public List<string> FillBox(string something,string what,int n)
         {            
 
@@ -41,6 +41,7 @@ namespace Fuck
                 }
             }
         }
+        // Поиск всех фургонов
         public List<string> FillVans()
         {
             using (OleDbCommand com = new OleDbCommand($"Select Id_van From Van", sqlConnection))
@@ -57,15 +58,14 @@ namespace Fuck
                 }
             }
         }
-
+        // Получение названий ингредиентов
+        //
         public string COLUMN_NAME(string tableName)
         {
             DataTable schemaTable = sqlConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Columns, new object[] { null, null, tableName, null });
-
-            // Переменная для хранения имен столбцов
+            
             string columnsNames = "";
 
-            // Извлечение имен столбцов
             foreach (DataRow row in schemaTable.Rows)
             {
                 string columnName = row["COLUMN_NAME"].ToString();
@@ -85,11 +85,10 @@ namespace Fuck
                 columnsNames = columnsNames.Replace(word, "");
             }
             columnsNames = columnsNames.TrimEnd(' ', ',');
-            //columnsNames=columnsNames.Substring(1);
-            // Вывод имен столбцов в консоль (или выполнение других операций)
             return columnsNames;
         }
-
+        //
+        // Продукты одного фургона
         public int[] VanFoodstuf(string ingrediance ,string[] ingmass,string ID)
         {
             int[] van = new int[ingmass.Length];

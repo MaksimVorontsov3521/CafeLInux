@@ -23,12 +23,12 @@ namespace Fuck
         {
             InitializeComponent();
         }
-        
+        // Удаление товара из списка 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
             ListBox.Items.Remove(ListBox.SelectedItem);
         }
-
+        // Добавление заказа в список
         public void NewItem(List<string>OrderList,string Total,int number)
         {
             string resalt = "";
