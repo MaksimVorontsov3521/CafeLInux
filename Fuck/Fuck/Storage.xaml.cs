@@ -24,10 +24,11 @@ namespace Fuck
     {// Создание необходимых переменных с областью видимости в пределах класса
         DishesFromMenu DFM = new DishesFromMenu();
         List<string> listOrder = new List<string>();
-        private string IDVAN = "";
+        private string IDVAN="" ;
         private string ingrediance;
         private string[] ingmass; 
         private int[] count;
+        private int[] invan;
         private int selectedID;
         public Storage(string role)
         {
@@ -39,20 +40,20 @@ namespace Fuck
             // Список ингридиентов
             ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
             ingmass = ingrediance.Split(',');
-            Foodstuff.ItemsSource = ingmass;
-            
+            Foodstuff.ItemsSource = ingmass;           
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-
+            DFM.StorageUpDate(count,IDVAN,ingmass,invan);
         }
         // Выбор фургона
         private void Vans_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Van_id.Content = Vans.SelectedItem.ToString();
             IDVAN = Vans.SelectedItem.ToString();
-            count = DFM.VanFoodstuf(ingrediance, ingmass, IDVAN);
+            invan = DFM.VanFoodstuf(ingrediance, ingmass, IDVAN);
+            count = DFM.HaveToBeAdd(ingmass,ingrediance,invan);               
             Refresh();
             
         }

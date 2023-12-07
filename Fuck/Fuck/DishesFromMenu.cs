@@ -44,14 +44,14 @@ namespace Fuck
         // Поиск всех фургонов
         public List<string> FillVans()
         {
-            using (OleDbCommand com = new OleDbCommand($"Select Id_van From Van", sqlConnection))
+            using (OleDbCommand com = new OleDbCommand($"Select Account_van From Van", sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
                 {
                     List<string> values = new List<string>();
                     while (reader.Read())
                     {
-                        string value = reader["Id_van"] != DBNull.Value ? reader["Id_van"].ToString() : null;
+                        string value = reader["Account_van"] != DBNull.Value ? reader["Account_van"].ToString() : null;
                         values.Add(value);
                     }
                     return values;
@@ -89,11 +89,11 @@ namespace Fuck
         }
         //
         // Продукты одного фургона
-        public int[] VanFoodstuf(string ingrediance ,string[] ingmass,string ID)
+        public int[] VanFoodstuf(string ingrediance, string[] ingmass, string ID)
         {
             int[] van = new int[ingmass.Length];
             string between = "";
-            string query = $"SELECT {ingrediance} FROM Van WHERE Id_van='{ID}' ";
+            string query = $"SELECT {ingrediance} FROM Van WHERE Account_van='{ID}' ";
             using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
@@ -105,11 +105,47 @@ namespace Fuck
                             between = reader[$"{ingmass[j]}"] != DBNull.Value ? reader[$"{ingmass[j]}"].ToString() : null;
                             van[j] = van[j] + Convert.ToInt32(between);
                         }
-                        //between = reader[$"Ordering"] != DBNull.Value ? reader[$"Ordering"].ToString() : null;                       
                     }
                 }
             }
             return van;
+        }
+        public int[] HaveToBeAdd(string[] ingmass,string ingrediance,int[] van)
+        {
+            int[] HaveToBe = new int[van.Length];
+            string between = "";
+            int[] Base = new int[ingmass.Length];
+            string query1 = $"Select {ingrediance} FROM Storage WHERE Id_van= 0 ";
+            using (OleDbCommand com = new OleDbCommand(query1, sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        for (int j = 0; j < ingmass.Length; j++)
+                        {
+                            between = reader[$"{ingmass[j]}"] != DBNull.Value ? reader[$"{ingmass[j]}"].ToString() : null;
+                            Base[j] = Base[j] + Convert.ToInt32(between);
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < ingmass.Length; i++)
+            {
+                HaveToBe[i] = Base[i] - van[i];
+            }
+            return HaveToBe;
+        }      
+        public void StorageUpDate(int[] count, string IDVAN, string[] ingrediance,int[]invan)
+        {
+            string ing="";
+            for (int i = 0; i < count.Length; i++)
+            {
+                ing = ing + $"{ingrediance[i]}={count[i]+invan[i]}" + ",";
+            }
+            string query = $"UPDATE Van SET {ing} Ordering=0 WHERE Account_van = '{IDVAN}'";          
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
         }
     }
 }
