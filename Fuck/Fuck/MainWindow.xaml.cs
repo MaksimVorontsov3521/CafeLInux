@@ -41,14 +41,20 @@ namespace Fuck
                 Cashier cashier = new Cashier(role);
                 cashier.Show();
                 this.Hide();
-                
+
             }
             else if (x == "storage")
             {
                 Storage storage = new Storage(role);
                 storage.Show();
                 this.Hide();
-                
+
+            }
+            else if (x=="admin")
+            {
+                Admin admin = new Admin(role);
+                admin.Show();
+                this.Hide();
             }
             // если неверные login или password
             else

@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data.OleDb;
 using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
+
 
 namespace Fuck
 {
@@ -53,7 +55,8 @@ namespace Fuck
         // Метод для подсчёта суммы заказа 
         public void addtosum(string item)
         {
-            listOrder.Add(item.Remove(6));
+            listOrder.Add(item.Remove(5));
+            //Groupe(item);
             char[] arr;
             arr = item.ToCharArray();
             Array.Reverse(arr);
@@ -74,10 +77,36 @@ namespace Fuck
             OrderSum.Content = allsum;
         }
         public int allsum = 0;
-
-        private void CreateOrder_Click(object sender, RoutedEventArgs e)
+        public void delfromsum(string item)
         {
-            // Метод находит количество продуктов необходимых для заказа
+            listOrder.Remove(item.Remove(5));
+            char[] arr;
+            arr = item.ToCharArray();
+            Array.Reverse(arr);
+            Array.Resize(ref arr, 3);
+            Array.Reverse(arr);
+            item = null;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                item = item + arr[i].ToString();
+            }
+            int x = Convert.ToInt32(item);
+
+            if (x < 0)
+            {
+                x = x * -1;
+            }
+            allsum = allsum - x;
+            Order.Items.Remove(Order.SelectedItem);
+            OrderSum.Content = allsum;                      
+            Order.SelectedItem = null;
+        }
+        // Метод находит количество продуктов необходимых для заказа
+        private void CreateOrder_Click(object sender, RoutedEventArgs e)
+        {   if (allsum==0)
+            {
+                return;
+            }
             int[] order = new int[ingmass.Length];
             string query;
             string dynamicCondition;
@@ -133,35 +162,72 @@ namespace Fuck
         //Метод обновляет продукты в фургоне, отправляет заказ в ожидание и очищает поля для нового заказа
         private void UpDate(int[] order, int[] van, int count)
         {
+            int[] update = new int[ingmass.Length];
+            for (int i = 0; i < ingmass.Length; i++)
+            {
+                update[i] = van[i] - order[i];
+                if (update[i] < 0)
+                {
+                    MessageBox.Show($"Нехватает {ingmass[i]}");
+                    return;
+                }
+            }
             count++;
             string ing = "";
             for (int i = 0; i < ingmass.Length; i++)
             {
-                ing = ing + $"{ingmass[i]}={van[i] - order[i]}" + ",";
+                ing = ing + $"{ingmass[i]}={update[i]}" + ",";
             }
             string Id = workerIDlabel.Content.ToString();
             string query = $"UPDATE Van SET {ing} Ordering={count} WHERE Account_van = '{Id}'";
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
             Orders.NewItem(listOrder, OrderSum.Content.ToString(), count);
+
+            Order.SelectedItem = null;
+            clearall();
+        }
+        private void clearall()
+        {
+            Order.SelectedItem = null;
             listOrder.Clear();
             Order.Items.Clear();
             OrderSum.Content = "0";
             allsum = 0;
         }
-
         // Метод проверяет выбранный товар и добавляет его в заказ
         private void BoxSelect(ComboBox box)
         {
+            Order.SelectedItem = null;
             object item = box.SelectedItem;
             if (item == null)
             {
 
             }
             else
-            {
-                Order.Items.Insert(0, item.ToString());
+            {             
                 addtosum(item.ToString());
+                Order.Items.Insert(0, item.ToString());
+            }
+        }
+
+        private void Groupe(object item)
+        { 
+        var counts = listOrder.GroupBy(x => x)
+                .Select(group => new { Value = group.Key, Count = group.Count() });
+            foreach (var count in counts)
+            {
+                string name = item.ToString() + $" Кол-во {count.Count}";
+                if (count.Count==1)
+                {
+                    Order.Items.Insert(0, name);
+                }
+                else 
+                {
+                    string lastname = item.ToString() + $" Кол-во {count.Count-1}";
+                    Order.Items.Remove(lastname);
+                    Order.Items.Insert(0, name);
+                }                 
             }
         }
         // методы для добавление товаров в заказ
@@ -196,6 +262,23 @@ namespace Fuck
         private void AddSnack_Click(object sender, RoutedEventArgs e)
         {
                 BoxSelect(BoxSnack);
+        }
+
+        private void Order_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object item = Order.SelectedItem;
+            if (item == null)
+            { }
+            else
+            {
+                delfromsum(item.ToString());
+            }
+            
+        }
+
+        private void DeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            clearall();
         }
         //
     }

@@ -147,5 +147,41 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
+        public void AddIteminMenu(string category, string name,int price,string[] ingmass, int[] countmas)
+        {
+            string ingrediance="";
+            string count="";
+            string fullname = category+ "_"+ name;
+            for (int i = 0; i < ingmass.Length; i++)
+            {
+                ingrediance = ingrediance + ingmass[i]+",";
+                count += "'"+Convert.ToString(countmas[i])+"'"+",";
+            }
+            string query = $"INSERT INTO Menu ({ingrediance}Dish,Price) VALUES({count}'{fullname}','{price}')";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+        public List<string> Alldishes()
+        {
+            using (OleDbCommand com = new OleDbCommand($"Select Dish From Menu", sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    List<string> values = new List<string>();
+                    while (reader.Read())
+                    {
+                        string value = reader["Dish"] != DBNull.Value ? reader["Dish"].ToString() : null;
+                        values.Add(value);
+                    }
+                    return values;
+                }
+            }
+        }
+        public void Deleteitem(string item)
+        {
+            string query = $"Delete From Menu Where Dish like'{item}'";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
     }
 }

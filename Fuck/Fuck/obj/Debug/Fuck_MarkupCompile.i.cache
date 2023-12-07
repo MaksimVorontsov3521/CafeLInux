@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-X:\program\Fuck\Fuck\obj\Debug\
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\
 Fuck
 none
 false
 DEBUG;TRACE
-X:\program\Fuck\Fuck\App.xaml
-4-501000843
+X:\Desktop\Coffee\Fuck\Fuck\App.xaml
+5-1120384737
 
-10-1565500506
+11-2130540024
 15-362035793
-Cashier.xaml;MainWindow.xaml;Orders.xaml;Storage.xaml;
+Admin.xaml;Cashier.xaml;MainWindow.xaml;Orders.xaml;Storage.xaml;
 
 True
 

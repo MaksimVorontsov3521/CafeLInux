@@ -44,3 +44,5 @@ X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Fuck.csproj.CoreCompileInputs.cache
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Fuck.csproj.CopyComplete
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Fuck.exe
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Fuck.pdb
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Admin.g.cs
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Admin.baml
