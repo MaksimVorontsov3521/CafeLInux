@@ -33,10 +33,13 @@ namespace Fuck
                         string value = reader[something] != DBNull.Value ? reader[something].ToString() : null;
                         values.Add(value);
                     }
+                    // убрать название категории
+                    /*
                     for (int i = 0; i < values.Count; i++)
-                    {// убрать название категории
+                    {
                         values[i] = values[i].Remove(0, n);
                     }
+                    */
                     return values;
                 }
             }
@@ -89,11 +92,11 @@ namespace Fuck
         }
         //
         // Продукты одного фургона
-        public int[] VanFoodstuf(string ingrediance, string[] ingmass, string ID)
+        public int[] VanFoodstuf(string ingrediance, string[] ingmass, string ID,string tabname)
         {
             int[] van = new int[ingmass.Length];
             string between = "";
-            string query = $"SELECT {ingrediance} FROM Van WHERE Account_van='{ID}' ";
+            string query = $"SELECT {ingrediance} FROM {tabname} WHERE Account_van='{ID}' ";
             using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
@@ -182,6 +185,38 @@ namespace Fuck
             string query = $"Delete From Menu Where Dish like'{item}'";
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
+        }
+
+        public void CashirReport(List<string>orderlist,string role,string ingrediance, string[] ingmass)
+        {
+            string Dishes = "";
+            var counts = orderlist.GroupBy(x => x).Select(group => new { Value = group.Key, Count = group.Count() });
+            foreach (var count in counts)
+            {
+                int x = count.Count + inreport(count.Value, role);
+                Dishes += count.Value + "=" + x +",";
+            }
+            Dishes = Dishes.TrimEnd(',');
+            string query = $"Update Report Set {Dishes} Where N_Van='{role}'";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+        private int inreport(string dish,string role)
+        {
+            string query = $"Select {dish} From Report Where N_Van='{role}'";
+            using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    int values=0;
+                    while (reader.Read())
+                    {
+                        string value = reader[dish] != DBNull.Value ? reader[dish].ToString() : null;
+                        values=Convert.ToInt32(value);
+                    }
+                    return values;
+                }
+            }
         }
     }
 }

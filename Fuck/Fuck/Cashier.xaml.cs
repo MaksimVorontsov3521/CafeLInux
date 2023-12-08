@@ -5,6 +5,7 @@ using System.Data.OleDb;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 
 namespace Fuck
@@ -20,6 +21,17 @@ namespace Fuck
         private string ingrediance;
         private string[] ingmass;
         Orders Orders = new Orders();
+        public ObservableCollection<ComboBoxItemData> Items { get; set; }
+        private char[] charprice = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Ц', 'е', 'н', 'а',' ','-' };
+
+        private void FillBoxes()
+        {
+            Items = new ObservableCollection<ComboBoxItemData>
+            {
+                new ComboBoxItemData { DisplayText = "Item 1", FullText = "This is the full text for Item 1" }
+            };
+
+        }
         public Cashier(string role)
         {
             InitializeComponent();
@@ -55,7 +67,7 @@ namespace Fuck
         // Метод для подсчёта суммы заказа 
         public void addtosum(string item)
         {
-            listOrder.Add(item.Remove(5));
+            listOrder.Add(item.TrimEnd(charprice));
             //Groupe(item);
             char[] arr;
             arr = item.ToCharArray();
@@ -183,7 +195,7 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
             Orders.NewItem(listOrder, OrderSum.Content.ToString(), count);
-
+            DFM.CashirReport(listOrder,Id,ingrediance,ingmass);
             Order.SelectedItem = null;
             clearall();
         }
@@ -272,10 +284,8 @@ namespace Fuck
             else
             {
                 delfromsum(item.ToString());
-            }
-            
+            }           
         }
-
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
             clearall();
