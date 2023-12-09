@@ -21,17 +21,8 @@ namespace Fuck
         private string ingrediance;
         private string[] ingmass;
         Orders Orders = new Orders();
-        public ObservableCollection<ComboBoxItemData> Items { get; set; }
         private char[] charprice = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Ц', 'е', 'н', 'а',' ','-' };
 
-        private void FillBoxes()
-        {
-            Items = new ObservableCollection<ComboBoxItemData>
-            {
-                new ComboBoxItemData { DisplayText = "Item 1", FullText = "This is the full text for Item 1" }
-            };
-
-        }
         public Cashier(string role)
         {
             InitializeComponent();
@@ -223,25 +214,6 @@ namespace Fuck
             }
         }
 
-        private void Groupe(object item)
-        { 
-        var counts = listOrder.GroupBy(x => x)
-                .Select(group => new { Value = group.Key, Count = group.Count() });
-            foreach (var count in counts)
-            {
-                string name = item.ToString() + $" Кол-во {count.Count}";
-                if (count.Count==1)
-                {
-                    Order.Items.Insert(0, name);
-                }
-                else 
-                {
-                    string lastname = item.ToString() + $" Кол-во {count.Count-1}";
-                    Order.Items.Remove(lastname);
-                    Order.Items.Insert(0, name);
-                }                 
-            }
-        }
         // методы для добавление товаров в заказ
         private void BoxCoffee_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -275,7 +247,6 @@ namespace Fuck
         {
                 BoxSelect(BoxSnack);
         }
-
         private void Order_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object item = Order.SelectedItem;

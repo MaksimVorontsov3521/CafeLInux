@@ -33,13 +33,6 @@ namespace Fuck
                         string value = reader[something] != DBNull.Value ? reader[something].ToString() : null;
                         values.Add(value);
                     }
-                    // убрать название категории
-                    /*
-                    for (int i = 0; i < values.Count; i++)
-                    {
-                        values[i] = values[i].Remove(0, n);
-                    }
-                    */
                     return values;
                 }
             }
@@ -118,7 +111,7 @@ namespace Fuck
             int[] HaveToBe = new int[van.Length];
             string between = "";
             int[] Base = new int[ingmass.Length];
-            string query1 = $"Select {ingrediance} FROM Storage WHERE Id_van= 0 ";
+            string query1 = $"Select {ingrediance} FROM Storage WHERE Id_van= '0' ";
             using (OleDbCommand com = new OleDbCommand(query1, sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
@@ -139,16 +132,25 @@ namespace Fuck
             }
             return HaveToBe;
         }      
-        public void StorageUpDate(int[] count, string IDVAN, string[] ingrediance,int[]invan)
+        public void StorageUpDate(int[] count, string Account_van, string[] ingrediance,int[]invan)
         {
             string ing="";
             for (int i = 0; i < count.Length; i++)
             {
                 ing = ing + $"{ingrediance[i]}={count[i]+invan[i]}" + ",";
             }
-            string query = $"UPDATE Van SET {ing} Ordering=0 WHERE Account_van = '{IDVAN}'";          
+            string query = $"UPDATE Van SET {ing} Ordering=0 WHERE Account_van = '{Account_van}'";          
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
+            string sto = "";
+            for (int i = 0; i < count.Length; i++)
+            {
+                sto += $"{ingrediance[i]}={count[i]},";
+            }
+            sto = sto.TrimEnd(' ', ',');
+            query = $"Update Storage Set {sto} Where Id_van='{Account_van}'";
+            OleDbCommand comm = new OleDbCommand(query, sqlConnection);
+            comm.ExecuteNonQuery();
         }
         public void AddIteminMenu(string category, string name,int price,string[] ingmass, int[] countmas)
         {
