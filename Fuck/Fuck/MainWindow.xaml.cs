@@ -50,7 +50,13 @@ namespace Fuck
                 this.Hide();
 
             }
-            else if (x=="admin")
+            else if (x=="manager")
+            {
+                Manager manager = new Manager(role);
+                manager.Show();
+                this.Hide();
+            }
+            else if (x == "admin")
             {
                 Admin admin = new Admin(role);
                 admin.Show();

@@ -1,0 +1,35 @@
+﻿<Window x:Class="Fuck.Manager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fuck"
+        mc:Ignorable="d"
+        Title="Manager" Height="450" Width="800" Initialized="Window_Initialized">
+    <Grid>
+        <Label x:Name="workerIDlabel" Content="" HorizontalAlignment="Left" Margin="726,10,0,0" VerticalAlignment="Top" Width="56"/>
+        <Label Content="You are -" HorizontalAlignment="Left" Margin="664,10,0,0" VerticalAlignment="Top"/>
+        <TabControl HorizontalAlignment="Left" Height="332" Margin="40,36,0,0" VerticalAlignment="Top" Width="605">
+            <TabItem x:Name="Workers" Header="Workers">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="WorkersGrid" HorizontalAlignment="Left" Height="175" Margin="10,10,0,0" VerticalAlignment="Top" Width="579" AutoGenerateColumns="True" SelectionChanged="WorkersGrid_SelectionChanged"/>
+                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="75" Height="42"/>
+                    <Button Content="Удалить" HorizontalAlignment="Left" Height="42" Margin="514,212,0,0" VerticalAlignment="Top" Width="64"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Results" Header="Results">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="ResultGrid" HorizontalAlignment="Left" Height="176" Margin="10,0,0,0" VerticalAlignment="Top" Width="579"/>
+                    <Button Content="Убрать" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="75" Height="71"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Storage" Header="Storage">
+                <Grid Background="#FFE5E5E5" >
+                    <DataGrid x:Name="StorageGrid" HorizontalAlignment="Left" Height="196" Margin="0,0,-6,0" VerticalAlignment="Top" Width="605"/>
+                    <Button Content="Изменить" HorizontalAlignment="Left" Height="43" Margin="10,215,0,0" VerticalAlignment="Top" Width="136"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
