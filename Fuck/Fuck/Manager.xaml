@@ -13,8 +13,8 @@
             <TabItem x:Name="Workers" Header="Workers">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="WorkersGrid" HorizontalAlignment="Left" Height="175" Margin="10,10,0,0" VerticalAlignment="Top" Width="579" AutoGenerateColumns="True" SelectionChanged="WorkersGrid_SelectionChanged"/>
-                    <Button Content="Добавить" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="75" Height="42"/>
-                    <Button Content="Удалить" HorizontalAlignment="Left" Height="42" Margin="514,212,0,0" VerticalAlignment="Top" Width="64"/>
+                    <Button x:Name="Addorkerbutton" Content="Добавить" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="75" Height="42" Click="Addorkerbutton_Click"/>
+                    <Button x:Name="DeleteWorker" Content="Удалить" HorizontalAlignment="Left" Height="42" Margin="525,212,0,0" VerticalAlignment="Top" Width="64" Click="DeleteWorker_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Results" Header="Results">
@@ -30,6 +30,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+        <Button x:Name="Restart" Content="Restart" HorizontalAlignment="Left" Height="53" Margin="666,315,0,0" VerticalAlignment="Top" Width="92" Click="Restart_Click"/>
 
     </Grid>
 </Window>

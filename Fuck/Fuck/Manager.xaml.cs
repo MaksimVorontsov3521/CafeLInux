@@ -100,12 +100,32 @@ namespace Fuck
 
         private void WorkersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void DeleteWorker_Click(object sender, RoutedEventArgs e)
+        {
             MyDataItem selectedDataItem = (MyDataItem)WorkersGrid.SelectedItem;
 
             if (selectedDataItem != null)
             {
-    
+                string query = $"Delete Form Accounts Where Login_user='{selectedDataItem.Login}' ";
+                OleDbCommand com = new OleDbCommand(query, sqlConnection);
+                com.ExecuteNonQuery();
             }
+        }
+
+        private void Addorkerbutton_Click(object sender, RoutedEventArgs e)
+        {
+            AddWorkrer addWorkrer = new AddWorkrer();
+            addWorkrer.Show();          
+        }
+
+        private void Restart_Click(object sender, RoutedEventArgs e)
+        {
+            WorkersGridUPdate();
+            ResultsGridUPdate();
+            StorageGridUPdate();
         }
     }
     public class MyDataItem

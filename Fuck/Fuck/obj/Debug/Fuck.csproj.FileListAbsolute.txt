@@ -48,3 +48,5 @@ X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Admin.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Admin.baml
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Manager.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Manager.baml
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.g.cs
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.baml

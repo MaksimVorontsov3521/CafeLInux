@@ -1,0 +1,23 @@
+﻿<Window x:Class="Fuck.AddWorkrer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fuck"
+        mc:Ignorable="d"
+        Title="AddWorkrer" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="Login" HorizontalAlignment="Left" Height="25" Margin="10,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="Suname" HorizontalAlignment="Left" Height="25" Margin="423,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="25" Margin="283,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="25" Margin="138,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <ComboBox x:Name="Role" HorizontalAlignment="Left" Margin="573,65,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Label Content="Login" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="138,39,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label x:Name="Nam" Content="Name" HorizontalAlignment="Left" Margin="283,39,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="Role" HorizontalAlignment="Left" Margin="573,40,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="423,40,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
+        <Button x:Name="Add" Content="Добавить" HorizontalAlignment="Left" Margin="573,126,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="Add_Click"/>
+
+    </Grid>
+</Window>
