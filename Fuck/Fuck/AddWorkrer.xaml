@@ -17,7 +17,12 @@
         <Label x:Name="Nam" Content="Name" HorizontalAlignment="Left" Margin="283,39,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <Label Content="Role" HorizontalAlignment="Left" Margin="573,40,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
         <Label Content="Surname" HorizontalAlignment="Left" Margin="423,40,0,0" VerticalAlignment="Top" Height="25" Width="100"/>
-        <Button x:Name="Add" Content="Добавить" HorizontalAlignment="Left" Margin="573,126,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="Add_Click"/>
+        <Button x:Name="Add" Content="Добавить работника" HorizontalAlignment="Left" Margin="523,118,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="Add_Click"/>
+        <ListBox x:Name="Ids" HorizontalAlignment="Left" Height="100" Margin="50,264,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListBox x:Name="Accounts" HorizontalAlignment="Left" Height="100" Margin="191,264,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="change" Content="Изменить " HorizontalAlignment="Left" Height="30" Margin="325,264,0,0" VerticalAlignment="Top" Width="89"/>
+        <Button x:Name="Addvan" Content="Добавить" HorizontalAlignment="Left" Height="30" Margin="325,334,0,0" VerticalAlignment="Top" Width="89" Click="Addvan_Click"/>
+        <Button x:Name="Refresh" Content="Refresh" HorizontalAlignment="Left" Height="30" Margin="627,334,0,0" VerticalAlignment="Top" Width="116" Click="Refresh_Click"/>
 
     </Grid>
 </Window>

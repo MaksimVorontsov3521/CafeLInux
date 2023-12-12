@@ -118,5 +118,71 @@ namespace Fuck
             return true; // Все TextBox заполнены
         }
 
+        public List<string> Alldishes(string somethig, string where)
+        {
+            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where}", sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    List<string> values = new List<string>();
+                    while (reader.Read())
+                    {
+                        string value = reader[somethig] != DBNull.Value ? reader[somethig].ToString() : null;
+                        values.Add(value);
+                    }
+                    return values;
+                }
+            }
+        }
+        public List<string> Allaccunts(string somethig, string where)
+        {
+            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where} Where Role_user='cashier'", sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    List<string> values = new List<string>();
+                    while (reader.Read())
+                    {
+                        string value = reader[somethig] != DBNull.Value ? reader[somethig].ToString() : null;
+                        values.Add(value);
+                    }
+                    return values;
+                }
+            }
+        }
+
+        private void Addvan_Click(object sender, RoutedEventArgs e)
+        {
+            int max = MaxId();
+            string query = $"Insert Into Van (Id_van,Account_van) Values('{max}','{Accounts.SelectedValue}')";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+        private int MaxId()
+        {
+    
+                using (OleDbCommand com = new OleDbCommand($"Select Id_van From Van", sqlConnection))
+                {
+                    using (OleDbDataReader reader = com.ExecuteReader())
+                    {
+                        List<int> values = new List<int>();
+                        while (reader.Read())
+                        {
+                            string value = reader["Id_van"] != DBNull.Value ? reader["Id_van"].ToString() : null;
+                            values.Add(Convert.ToInt32(value));
+                        }
+                    int max = values.Max();
+                    max += 1;
+                       return max;
+                    }
+                }
+            
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            Ids.ItemsSource=Alldishes("Id_van","Van");
+            Accounts.ItemsSource = Allaccunts("Login_user","Accounts");
+        }
     }
 }

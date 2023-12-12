@@ -25,6 +25,7 @@ namespace Fuck
     {
         private OleDbConnection sqlConnection = null;
         public ObservableCollection<MyDataItem> DataItems { get; set; }
+        public ObservableCollection<DataItemsVan> DataItemsVan { get; set; }
         public Manager(string role)
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace Fuck
             WorkersGridUPdate();
             ResultsGridUPdate();
             StorageGridUPdate();
+            VansUPdate();
         }
         private void WorkersGridUPdate()
         {
@@ -97,6 +99,29 @@ namespace Fuck
             // Закрытие соединения
             sqlConnection.Close();
         }
+        private void VansUPdate()
+        {
+            sqlConnection.Open();
+            string query = "Select * From Van ";
+            OleDbCommand command = new OleDbCommand(query, sqlConnection);
+            OleDbDataAdapter adapter = new OleDbDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            DataItemsVan = new ObservableCollection<DataItemsVan>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                DataItemsVan item = new DataItemsVan
+                {
+                    Account = row["Account_van"].ToString(),
+                    Id = row["Id_van"].ToString(),
+                    Ordering = row["Ordering"].ToString(),
+                    // Добавьте свойства по мере необходимости
+                };
+                DataItemsVan.Add(item);
+            }
+            sqlConnection.Close();
+            VansGrid.ItemsSource = DataItemsVan;
+        }
 
         private void WorkersGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -126,7 +151,19 @@ namespace Fuck
             WorkersGridUPdate();
             ResultsGridUPdate();
             StorageGridUPdate();
+            VansUPdate();
         }
+
+        private void AddVan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+    public class DataItemsVan
+    {
+        public string Account { get; set; }
+        public string Id { get; set; }
+        public string Ordering { get; set; }
     }
     public class MyDataItem
     {
