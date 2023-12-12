@@ -113,7 +113,6 @@ namespace Fuck
                 DataItemsVan item = new DataItemsVan
                 {
                     Account = row["Account_van"].ToString(),
-                    Id = row["Id_van"].ToString(),
                     Ordering = row["Ordering"].ToString(),
                     // Добавьте свойства по мере необходимости
                 };
@@ -131,12 +130,23 @@ namespace Fuck
         private void DeleteWorker_Click(object sender, RoutedEventArgs e)
         {
             MyDataItem selectedDataItem = (MyDataItem)WorkersGrid.SelectedItem;
-
+            
             if (selectedDataItem != null)
             {
-                string query = $"Delete Form Accounts Where Login_user='{selectedDataItem.Login}' ";
+                sqlConnection.Open();
+                string query = $"DELETE FROM Accounts WHERE Login_user = '{selectedDataItem.Login}'";
                 OleDbCommand com = new OleDbCommand(query, sqlConnection);
                 com.ExecuteNonQuery();
+                query = $"DELETE FROM Van WHERE Account_van = '{selectedDataItem.Login}'";
+                com = new OleDbCommand(query, sqlConnection);
+                com.ExecuteNonQuery();
+                query = $"DELETE FROM Report WHERE N_Van = '{selectedDataItem.Login}'";
+                com = new OleDbCommand(query, sqlConnection);
+                com.ExecuteNonQuery();
+                query = $"DELETE FROM Storage WHERE Id_van = '{selectedDataItem.Login}'";
+                com = new OleDbCommand(query, sqlConnection);
+                com.ExecuteNonQuery();
+                sqlConnection.Close();
             }
         }
 
@@ -162,7 +172,6 @@ namespace Fuck
     public class DataItemsVan
     {
         public string Account { get; set; }
-        public string Id { get; set; }
         public string Ordering { get; set; }
     }
     public class MyDataItem

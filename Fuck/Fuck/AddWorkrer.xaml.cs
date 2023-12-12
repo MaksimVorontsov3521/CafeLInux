@@ -39,7 +39,7 @@ namespace Fuck
 
             if (AreTextBoxesFilled())
             {
-                if (UniqeLogin() == null)
+                if (UniqeLogin() != 0)
                 {
                     MessageBox.Show("Login - занят");
                 }
@@ -53,8 +53,11 @@ namespace Fuck
                         $" Values('{Login.Text}','{Password.Text}','{Name.Text}','{Suname.Text}','{Role.SelectedValue}')";
                         OleDbCommand com = new OleDbCommand(query, sqlConnection);
                         com.ExecuteNonQuery();
-                    this.Close();
-                   
+                    if (Role.SelectedValue == "cashier")
+                    {
+                        AddVan();
+                    }
+                    this.Close();              
                 }
             }
             else
@@ -63,7 +66,7 @@ namespace Fuck
             }
 
         }
-        private List<string> UniqeLogin()
+        private int UniqeLogin()
         {
             string query = $"Select Login_user From Accounts Where Login_user='{Login.Text}'";
             using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
@@ -76,7 +79,7 @@ namespace Fuck
                         string value = reader["Login_user"] != DBNull.Value ? reader["Login_user"].ToString() : null;
                         values.Add(value);
                     }
-                    return values;
+                    return values.Count();
                 }
             }
 
@@ -118,25 +121,9 @@ namespace Fuck
             return true; // Все TextBox заполнены
         }
 
-        public List<string> Alldishes(string somethig, string where)
+        public List<string> Allaccunts(string somethig, string where,string column, string equals)
         {
-            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where}", sqlConnection))
-            {
-                using (OleDbDataReader reader = com.ExecuteReader())
-                {
-                    List<string> values = new List<string>();
-                    while (reader.Read())
-                    {
-                        string value = reader[somethig] != DBNull.Value ? reader[somethig].ToString() : null;
-                        values.Add(value);
-                    }
-                    return values;
-                }
-            }
-        }
-        public List<string> Allaccunts(string somethig, string where)
-        {
-            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where} Where Role_user='cashier'", sqlConnection))
+            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where} Where {column}={equals}", sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
                 {
@@ -151,38 +138,18 @@ namespace Fuck
             }
         }
 
-        private void Addvan_Click(object sender, RoutedEventArgs e)
+        private void AddVan()
         {
-            int max = MaxId();
-            string query = $"Insert Into Van (Id_van,Account_van) Values('{max}','{Accounts.SelectedValue}')";
+            string query = $"Insert Into Van (Account_van) Values('{Login.Text}')";
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
-        }
-        private int MaxId()
-        {
-    
-                using (OleDbCommand com = new OleDbCommand($"Select Id_van From Van", sqlConnection))
-                {
-                    using (OleDbDataReader reader = com.ExecuteReader())
-                    {
-                        List<int> values = new List<int>();
-                        while (reader.Read())
-                        {
-                            string value = reader["Id_van"] != DBNull.Value ? reader["Id_van"].ToString() : null;
-                            values.Add(Convert.ToInt32(value));
-                        }
-                    int max = values.Max();
-                    max += 1;
-                       return max;
-                    }
-                }
-            
+            query = $"Insert Into Report (N_Van) Values('{Login.Text}')";
+            com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+            query = $"Insert Into Storage (Id_van) Values('{Login.Text}')";
+            com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
         }
 
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            Ids.ItemsSource=Alldishes("Id_van","Van");
-            Accounts.ItemsSource = Allaccunts("Login_user","Accounts");
-        }
     }
 }
