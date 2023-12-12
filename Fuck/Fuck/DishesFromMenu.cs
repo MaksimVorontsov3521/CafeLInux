@@ -220,5 +220,13 @@ namespace Fuck
                 }
             }
         }
+        public void Addcolumn(string category, string name)
+        {
+            string fullname = category + "_" + name;
+            string query = $"ALTER TABLE Report ADD {fullname} INT";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+
     }
 }

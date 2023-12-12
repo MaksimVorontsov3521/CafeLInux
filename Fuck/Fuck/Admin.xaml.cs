@@ -64,6 +64,7 @@ namespace Fuck
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
             DFM.AddIteminMenu(Category.SelectedValue.ToString(),Name.Text,Convert.ToInt32(Price.Text),ingmass,count);
+            DFM.Addcolumn(Category.SelectedValue.ToString(), Name.Text);
         }
 
         private void Del_Click(object sender, RoutedEventArgs e)
