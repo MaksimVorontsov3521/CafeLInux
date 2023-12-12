@@ -26,13 +26,12 @@
             <TabItem x:Name="Storage" Header="Storage">
                 <Grid Background="#FFE5E5E5" >
                     <DataGrid x:Name="StorageGrid" HorizontalAlignment="Left" Height="196" Margin="0,0,-6,0" VerticalAlignment="Top" Width="605"/>
-                    <Button Content="Изменить" HorizontalAlignment="Left" Height="43" Margin="10,215,0,0" VerticalAlignment="Top" Width="136"/>
+                    <Button x:Name="Standard" Content="Изменить" HorizontalAlignment="Left" Height="43" Margin="10,215,0,0" VerticalAlignment="Top" Width="136" Click="Standard_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Vans" Header="Vans">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="VansGrid" HorizontalAlignment="Left" Height="284" Margin="10,10,0,0" VerticalAlignment="Top" Width="177"/>
-                    <Button x:Name="AddVan" Content="Добавить" HorizontalAlignment="Left" Height="59" Margin="505,235,0,0" VerticalAlignment="Top" Width="84" Click="AddVan_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

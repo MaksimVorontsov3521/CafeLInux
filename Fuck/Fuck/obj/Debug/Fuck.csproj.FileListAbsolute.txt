@@ -50,3 +50,5 @@ X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Manager.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Manager.baml
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.baml
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.g.cs
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.baml

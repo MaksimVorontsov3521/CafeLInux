@@ -164,9 +164,10 @@ namespace Fuck
             VansUPdate();
         }
 
-        private void AddVan_Click(object sender, RoutedEventArgs e)
+        private void Standard_Click(object sender, RoutedEventArgs e)
         {
-
+            StandardForStorage SFS = new StandardForStorage();
+            SFS.Show();
         }
     }
     public class DataItemsVan

@@ -85,11 +85,11 @@ namespace Fuck
         }
         //
         // Продукты одного фургона
-        public int[] VanFoodstuf(string ingrediance, string[] ingmass, string ID,string tabname)
+        public int[] VanFoodstuf(string ingrediance, string[] ingmass, string ID,string tabname,string name)
         {
             int[] van = new int[ingmass.Length];
             string between = "";
-            string query = $"SELECT {ingrediance} FROM {tabname} WHERE Account_van='{ID}' ";
+            string query = $"SELECT {ingrediance} FROM {tabname} WHERE {name}='{ID}' ";
             using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
@@ -224,6 +224,50 @@ namespace Fuck
         {
             string fullname = category + "_" + name;
             string query = $"ALTER TABLE Report ADD {fullname} INT";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+        public int UniqeDish(string category, string name)
+        {
+            string fullname = category + "_" + name;
+            string query = $"Select Dish From Menu Where Dish ='{fullname}'";
+            using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    List<string> values = new List<string>();
+                    while (reader.Read())
+                    {
+                        string value = reader["Dish"] != DBNull.Value ? reader["Dish"].ToString() : null;
+                        values.Add(value);
+                    }
+                    return values.Count();
+                }
+            }
+
+        }
+        public void AddNewItem(string name)
+        {
+            string query = $"ALTER TABLE Menu ADD {name} INT";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+            query = $"ALTER TABLE Storage ADD {name} INT";
+            com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+            query = $"ALTER TABLE Van ADD {name} INT";
+            com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
+
+        public void Standart(string [] ingmass, int [] count)
+        {
+            string combind = "";
+            for (int i = 0; i < count.Length; i++)
+            {
+                combind += ingmass[i] + "=" + count[i] + ",";
+            }
+            combind= combind.TrimEnd(',');
+            string query = $"Update Storage Set {combind} Where Id_van = '0'";
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }

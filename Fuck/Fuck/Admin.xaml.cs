@@ -48,10 +48,25 @@ namespace Fuck
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            count[selectedID] = Convert.ToInt32(Quantity.Text);
-            Refresh();
-        }
+            if (Products.SelectedItem == null && Quantity.Text=="")
+            {
 
+            }
+            else
+            {
+                try
+                {
+                    count[selectedID] = Convert.ToInt32(Quantity.Text);
+                    Refresh();
+                }
+                catch
+                {
+                    MessageBox.Show("Пожалуйста, Введите цыфры.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                }
+
+            }
+        }
         private void Products_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedID = (int)Products.SelectedIndex;
@@ -63,14 +78,30 @@ namespace Fuck
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
+            if (Category.SelectedValue == null && Name.Text == "")
+            {
+                MessageBox.Show("Пожалуйста, заполните все Поля.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if (DFM.UniqeDish(Category.SelectedValue.ToString(), Name.Text)!=0)
+            {
+                MessageBox.Show("Такое блюдо уже существует.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             DFM.AddIteminMenu(Category.SelectedValue.ToString(),Name.Text,Convert.ToInt32(Price.Text),ingmass,count);
             DFM.Addcolumn(Category.SelectedValue.ToString(), Name.Text);
         }
+
 
         private void Del_Click(object sender, RoutedEventArgs e)
         {
             string item =Disheslist.SelectedItem.ToString();
             DFM.Deleteitem(item);
+        }
+
+        private void AddNewItem_Click(object sender, RoutedEventArgs e)
+        {
+            DFM.AddNewItem(NewItem.Text);
         }
     }
 }

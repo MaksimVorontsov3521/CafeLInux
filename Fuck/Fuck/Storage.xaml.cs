@@ -52,7 +52,7 @@ namespace Fuck
         {
             Van_id.Content = Vans.SelectedItem.ToString();
             IDVAN = Vans.SelectedItem.ToString();
-            invan = DFM.VanFoodstuf(ingrediance, ingmass, IDVAN,"Van");
+            invan = DFM.VanFoodstuf(ingrediance, ingmass, IDVAN,"Van","Account_van");
             count = DFM.HaveToBeAdd(ingmass,ingrediance,invan);               
             Refresh();
             
