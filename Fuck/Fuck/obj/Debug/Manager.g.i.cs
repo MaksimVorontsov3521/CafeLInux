@@ -137,7 +137,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 38 "..\..\Manager.xaml"
+        #line 39 "..\..\Manager.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Restart;
         
@@ -245,7 +245,7 @@ namespace Fuck {
             case 14:
             this.Restart = ((System.Windows.Controls.Button)(target));
             
-            #line 38 "..\..\Manager.xaml"
+            #line 39 "..\..\Manager.xaml"
             this.Restart.Click += new System.Windows.RoutedEventHandler(this.Restart_Click);
             
             #line default

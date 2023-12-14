@@ -187,6 +187,7 @@ namespace Fuck
             com.ExecuteNonQuery();
             Orders.NewItem(listOrder, OrderSum.Content.ToString(), count);
             DFM.CashirReport(listOrder,Id,ingrediance,ingmass);
+            MessageBox.Show("Оплата прошла успешно");
             Order.SelectedItem = null;
             clearall();
         }

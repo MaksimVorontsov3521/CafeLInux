@@ -39,6 +39,7 @@ namespace Fuck
             ResultsGridUPdate();
             StorageGridUPdate();
             VansUPdate();
+            
         }
         private void WorkersGridUPdate()
         {
@@ -162,6 +163,7 @@ namespace Fuck
             ResultsGridUPdate();
             StorageGridUPdate();
             VansUPdate();
+            
         }
 
         private void Standard_Click(object sender, RoutedEventArgs e)
