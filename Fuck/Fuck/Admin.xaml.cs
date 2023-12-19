@@ -34,7 +34,7 @@ namespace Fuck
             Products.ItemsSource = combine();
             List<string> category = new List<string>() {"Coffee", "dessert", "sauce", "snack"};
             Category.ItemsSource = category;
-            Disheslist.ItemsSource = DFM.Alldishes();
+            Disheslist.ItemsSource = DFM.AllSomething("Dish","Menu");
         }
         private string[] combine()
         {

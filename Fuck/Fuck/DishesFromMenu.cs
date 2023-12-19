@@ -38,16 +38,16 @@ namespace Fuck
             }
         }
         // Поиск всех фургонов
-        public List<string> FillVans()
+        public List<string> AllSomething(string something, string where)
         {
-            using (OleDbCommand com = new OleDbCommand($"Select Account_van From Van", sqlConnection))
+            using (OleDbCommand com = new OleDbCommand($"Select {something} From {where}", sqlConnection))
             {
                 using (OleDbDataReader reader = com.ExecuteReader())
                 {
                     List<string> values = new List<string>();
                     while (reader.Read())
                     {
-                        string value = reader["Account_van"] != DBNull.Value ? reader["Account_van"].ToString() : null;
+                        string value = reader[something] != DBNull.Value ? reader[something].ToString() : null;
                         values.Add(value);
                     }
                     return values;
@@ -166,22 +166,7 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
-        public List<string> Alldishes()
-        {
-            using (OleDbCommand com = new OleDbCommand($"Select Dish From Menu", sqlConnection))
-            {
-                using (OleDbDataReader reader = com.ExecuteReader())
-                {
-                    List<string> values = new List<string>();
-                    while (reader.Read())
-                    {
-                        string value = reader["Dish"] != DBNull.Value ? reader["Dish"].ToString() : null;
-                        values.Add(value);
-                    }
-                    return values;
-                }
-            }
-        }
+
         public void Deleteitem(string item)
         {
             string query = $"Delete From Menu Where Dish like'{item}'";

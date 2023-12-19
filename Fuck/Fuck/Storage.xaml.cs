@@ -36,7 +36,7 @@ namespace Fuck
             // Login пользователя
             workerIDlabel.Content = role;
             // Список фургонов
-            Vans.ItemsSource = DFM.FillVans(); 
+            Vans.ItemsSource = DFM.AllSomething("Account_van", "Van"); 
             // Список ингридиентов
             ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
             ingmass = ingrediance.Split(',');

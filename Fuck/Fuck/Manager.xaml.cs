@@ -39,7 +39,8 @@ namespace Fuck
             ResultsGridUPdate();
             StorageGridUPdate();
             VansUPdate();
-            
+            statistic1();
+
         }
         private void WorkersGridUPdate()
         {
@@ -163,13 +164,51 @@ namespace Fuck
             ResultsGridUPdate();
             StorageGridUPdate();
             VansUPdate();
-            
         }
 
         private void Standard_Click(object sender, RoutedEventArgs e)
         {
             StandardForStorage SFS = new StandardForStorage();
             SFS.Show();
+        }
+
+        private void statistic1()
+        {
+            sqlConnection.Open();
+            DishesFromMenu DFM = new DishesFromMenu();
+            string query;
+            List<int> val = new List<int>();
+            List<string> Dishes = DFM.AllSomething("Dish","Menu");
+            List<int> Cost = new List<int>();
+            for (int i = 0; i < Dishes.Count; i++)
+            {
+                query = $"Select Sum({Dishes[i]}) From Report";
+                using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
+                {
+                    object result = com.ExecuteScalar();
+                    string vall = (result != null) ? result.ToString() : "Значение отсутствует";
+                    val.Add(Convert.ToInt32(vall));
+                }              
+            }
+           
+            
+            query = $"SELECT Price FROM Menu";
+            using (OleDbCommand com = new OleDbCommand(query, sqlConnection))
+            {
+                using (OleDbDataReader reader = com.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {                       
+                            Cost.Add(Convert.ToInt32(reader["Price"]));
+                    }
+                }
+            }
+            for (int i = 0; i < val.Count; i++)
+            {
+                Dishes[i] += "Колличество - " + val[i]+" Выручка - " + (val[i]*Cost[i]);
+            }          
+            Sells.ItemsSource = Dishes;
+            sqlConnection.Close();
         }
     }
     public class DataItemsVan
