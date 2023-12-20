@@ -13,21 +13,22 @@
         <Label x:Name="OrderSumLabel" Content="" HorizontalAlignment="Left" Margin="502,20,0,0" VerticalAlignment="Top" Width="64"/>
         <Label Content="Наличные" HorizontalAlignment="Left" Margin="401,67,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="CashSum" HorizontalAlignment="Left" Height="23" Margin="502,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="_50" Content="50" HorizontalAlignment="Left" Margin="522,159,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_100" Content="100" HorizontalAlignment="Left" Margin="646,159,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_200" Content="200" HorizontalAlignment="Left" Margin="397,208,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.854,-2.225"/>
-        <Button x:Name="_500" Content="500" HorizontalAlignment="Left" Margin="522,208,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_1000" Content="1000" HorizontalAlignment="Left" Margin="646,213,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_2000" Content="2000" HorizontalAlignment="Left" Margin="397,254,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_5000" Content="5000" HorizontalAlignment="Left" Margin="522,254,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="_50" Content="50" HorizontalAlignment="Left" Margin="522,159,0,0" VerticalAlignment="Top" Width="100" Click="_50_Click"/>
+        <Button x:Name="_100" Content="100" HorizontalAlignment="Left" Margin="646,159,0,0" VerticalAlignment="Top" Width="100" Click="_100_Click"/>
+        <Button x:Name="_200" Content="200" HorizontalAlignment="Left" Margin="397,208,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-1.854,-2.225" Click="_200_Click"/>
+        <Button x:Name="_500" Content="500" HorizontalAlignment="Left" Margin="522,208,0,0" VerticalAlignment="Top" Width="100" Click="_500_Click"/>
+        <Button x:Name="_1000" Content="1000" HorizontalAlignment="Left" Margin="646,213,0,0" VerticalAlignment="Top" Width="100" Click="_1000_Click"/>
+        <Button x:Name="_2000" Content="2000" HorizontalAlignment="Left" Margin="397,254,0,0" VerticalAlignment="Top" Width="100" Click="_2000_Click"/>
+        <Button x:Name="_5000" Content="5000" HorizontalAlignment="Left" Margin="522,254,0,0" VerticalAlignment="Top" Width="100" Click="_5000_Click"/>
         <Button x:Name="_1" Content="1" HorizontalAlignment="Left" Margin="401,113,0,0" VerticalAlignment="Top" Width="100" Click="_1_Click"/>
         <Button x:Name="_2" Content="2" HorizontalAlignment="Left" Margin="522,113,0,0" VerticalAlignment="Top" Width="100" Click="_2_Click"/>
-        <Button x:Name="_5" Content="5" HorizontalAlignment="Left" Margin="646,113,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="_10" Content="10" HorizontalAlignment="Left" Margin="401,159,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="_5" Content="5" HorizontalAlignment="Left" Margin="646,113,0,0" VerticalAlignment="Top" Width="100" Click="_5_Click"/>
+        <Button x:Name="_10" Content="10" HorizontalAlignment="Left" Margin="401,159,0,0" VerticalAlignment="Top" Width="100" Click="_10_Click"/>
         <Button x:Name="Pay" Content="Сдача" HorizontalAlignment="Left" Margin="646,254,0,0" VerticalAlignment="Top" Width="100" Click="Pay_Click"/>
         <Label Content="Сдача" HorizontalAlignment="Left" Margin="401,296,0,0" VerticalAlignment="Top" Width="47"/>
         <Label x:Name="Change" Content="" HorizontalAlignment="Left" Margin="463,296,0,0" VerticalAlignment="Top" Width="64"/>
         <Button x:Name="OK" Content="OK" HorizontalAlignment="Left" Height="51" Margin="671,358,0,0" VerticalAlignment="Top" Width="111" Click="OK_Click"/>
+        <Button x:Name="NotOK" Content="NotOK" HorizontalAlignment="Left" Height="51" Margin="551,358,0,0" VerticalAlignment="Top" Width="115" Click="NotOK_Click"/>
 
     </Grid>
 </Window>
