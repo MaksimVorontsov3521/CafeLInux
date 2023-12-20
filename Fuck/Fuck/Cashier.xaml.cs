@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 
 
+
 namespace Fuck
 {
     /// <summary>
@@ -19,8 +20,8 @@ namespace Fuck
         private OleDbConnection sqlConnection = null;
         DishesFromMenu DFM = new DishesFromMenu();
         private string ingrediance;
-        private string[] ingmass;
-        Orders Orders = new Orders();
+        private string[] ingmass;       
+        Payment payment = new Payment();
         private char[] charprice = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Ц', 'е', 'н', 'а',' ','-' };
 
         public Cashier(string role)
@@ -29,10 +30,12 @@ namespace Fuck
             // Login пользователя
             workerIDlabel.Content = role;
             // Открытие окна заказов
-            Orders.Show();
+            
+            payment.Show();
             // Получение списка продуктов из БД в string и string[]
             ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
             ingmass = ingrediance.Split(',');
+            payment.OneTime(ingrediance, ingmass,role);
             // Заполнение ComboBox с категориями товаров
             BoxSauce.ItemsSource = combine(DFM.FillBox("Dish", "sauce",6), DFM.FillBox("Price", "sauce",0));
             BoxCoffee.ItemsSource = combine(DFM.FillBox("Dish", "Coffee", 7), DFM.FillBox("Price", "Coffee", 0));
@@ -183,13 +186,11 @@ namespace Fuck
             }
             string Id = workerIDlabel.Content.ToString();
             string query = $"UPDATE Van SET {ing} Ordering={count} WHERE Account_van = '{Id}'";
-            OleDbCommand com = new OleDbCommand(query, sqlConnection);
-            com.ExecuteNonQuery();
-            Orders.NewItem(listOrder, OrderSum.Content.ToString(), count);
-            DFM.CashirReport(listOrder,Id,ingrediance,ingmass);
-            MessageBox.Show("Оплата прошла успешно");
+            payment.UPDATE(query,listOrder,allsum.ToString(),count);
+            //
+            //
             Order.SelectedItem = null;
-            clearall();
+            clearall();           
         }
         private void clearall()
         {

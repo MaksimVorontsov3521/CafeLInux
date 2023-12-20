@@ -52,3 +52,5 @@ X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\AddWorkrer.baml
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.baml
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Payment.g.cs
+X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Payment.baml
