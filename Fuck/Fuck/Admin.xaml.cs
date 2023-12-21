@@ -36,6 +36,7 @@ namespace Fuck
             Category.ItemsSource = category;
             Disheslist.ItemsSource = DFM.AllSomething("Dish","Menu");
         }
+        // метод для объединения сторк в одну
         private string[] combine()
         {
             string[] combined = new string[ingmass.Length];
@@ -47,13 +48,13 @@ namespace Fuck
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
-        {
+        {// проверка на соответствие условию
             if (Products.SelectedItem == null && Quantity.Text=="")
             {
 
             }
             else
-            {
+            {// проверка на соответствие условию
                 try
                 {
                     count[selectedID] = Convert.ToInt32(Quantity.Text);
@@ -77,30 +78,40 @@ namespace Fuck
         }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
-        {
+        {// проверка на соответствие условию
             if (Category.SelectedValue == null && Name.Text == "")
             {
                 MessageBox.Show("Пожалуйста, заполните все Поля.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            // проверка уникальность
             if (DFM.UniqeDish(Category.SelectedValue.ToString(), Name.Text)!=0)
             {
                 MessageBox.Show("Такое блюдо уже существует.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            //Выполнение метода
             DFM.AddIteminMenu(Category.SelectedValue.ToString(),Name.Text,Convert.ToInt32(Price.Text),ingmass,count);
             DFM.Addcolumn(Category.SelectedValue.ToString(), Name.Text);
         }
 
 
         private void Del_Click(object sender, RoutedEventArgs e)
-        {
-            string item =Disheslist.SelectedItem.ToString();
-            DFM.Deleteitem(item);
+        {// проверка на соответствие условию
+            if (Disheslist.SelectedItem==null)
+            {
+                return;
+            }
+                string item = Disheslist.SelectedItem.ToString();
+                DFM.Deleteitem(item);
         }
 
         private void AddNewItem_Click(object sender, RoutedEventArgs e)
-        {
+        {// проверка на соответствие условию
+            if (NewItem.Text=="")
+            {
+                return;
+            }
             DFM.AddNewItem(NewItem.Text);
         }
     }

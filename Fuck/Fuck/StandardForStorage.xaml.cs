@@ -32,6 +32,7 @@ namespace Fuck
             count = DFM.VanFoodstuf(ingrediance,ingmass,"0","Storage","Id_van");
             Products.ItemsSource = combine();
         }
+        // Объединение строк в одну
         private string[] combine()
         {
             string[] combined = new string[ingmass.Length];
@@ -41,7 +42,7 @@ namespace Fuck
             }
             return combined;
         }
-
+        // изменение колличества
         private void Change_Click(object sender, RoutedEventArgs e)
         {
             if (Products.SelectedItem == null && Quantity.Text == "")
@@ -71,7 +72,7 @@ namespace Fuck
         {
             selectedID = (int)Products.SelectedIndex;
         }
-
+        // Выполнение
         private void Aply_Click(object sender, RoutedEventArgs e)
         {
             DFM.Standart(ingmass,count);

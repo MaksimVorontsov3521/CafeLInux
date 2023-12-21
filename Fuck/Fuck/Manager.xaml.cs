@@ -42,6 +42,7 @@ namespace Fuck
             statistic1();
 
         }
+        // Обнавление
         private void WorkersGridUPdate()
         {
             sqlConnection.Open();
@@ -67,6 +68,7 @@ namespace Fuck
             sqlConnection.Close();
             WorkersGrid.ItemsSource = DataItems;
         }
+        // Обнавление
         private void ResultsGridUPdate()
         {
             sqlConnection.Open();
@@ -85,6 +87,7 @@ namespace Fuck
             // Закрытие соединения
             sqlConnection.Close();
         }
+        // Обнавление
         private void StorageGridUPdate()
         {
             // Выполнение SQL-запроса для получения данных
@@ -101,6 +104,7 @@ namespace Fuck
             // Закрытие соединения
             sqlConnection.Close();
         }
+        // Обнавление
         private void VansUPdate()
         {
             sqlConnection.Open();
@@ -171,7 +175,7 @@ namespace Fuck
             StandardForStorage SFS = new StandardForStorage();
             SFS.Show();
         }
-
+        // Выявление статистики из БД
         private void statistic1()
         {
             sqlConnection.Open();
@@ -210,7 +214,9 @@ namespace Fuck
             Sells.ItemsSource = Dishes;
             sqlConnection.Close();
         }
+
     }
+    // Классы для рабыты datagrid
     public class DataItemsVan
     {
         public string Account { get; set; }

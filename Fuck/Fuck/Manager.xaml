@@ -20,7 +20,6 @@
             <TabItem x:Name="Results" Header="Results">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="ResultGrid" HorizontalAlignment="Left" Height="176" Margin="10,0,0,0" VerticalAlignment="Top" Width="579"/>
-                    <Button Content="Убрать" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="75" Height="71"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Storage" Header="Storage">

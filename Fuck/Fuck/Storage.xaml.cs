@@ -45,6 +45,10 @@ namespace Fuck
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
+            if (Vans.SelectedValue==null)
+            {
+                return;
+            }
             DFM.StorageUpDate(count,IDVAN,ingmass,invan);
         }
         // Выбор фургона
@@ -82,8 +86,14 @@ namespace Fuck
         // Изменение количества продуктов 
         private void Сhange_Click(object sender, RoutedEventArgs e)
         {
-            count[selectedID] = Convert.ToInt32(Quantity.Text);
-            Refresh();
+            try 
+            { 
+                count[selectedID] = Convert.ToInt32(Quantity.Text);
+                Refresh();
+            }
+            catch { }
+            
+            
         }
     }
 }

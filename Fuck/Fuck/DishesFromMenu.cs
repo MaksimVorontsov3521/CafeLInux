@@ -106,6 +106,7 @@ namespace Fuck
             }
             return van;
         }
+        // сколько продуктов должно быьт дабваленно в фургон
         public int[] HaveToBeAdd(string[] ingmass,string ingrediance,int[] van)
         {
             int[] HaveToBe = new int[van.Length];
@@ -132,6 +133,7 @@ namespace Fuck
             }
             return HaveToBe;
         }      
+        // обнавление хранилища
         public void StorageUpDate(int[] count, string Account_van, string[] ingrediance,int[]invan)
         {
             string ing="";
@@ -152,6 +154,7 @@ namespace Fuck
             OleDbCommand comm = new OleDbCommand(query, sqlConnection);
             comm.ExecuteNonQuery();
         }
+        // добавление в меню
         public void AddIteminMenu(string category, string name,int price,string[] ingmass, int[] countmas)
         {
             string ingrediance="";
@@ -173,7 +176,7 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
-
+        // Сообщение о результатах работы фургона
         public void CashirReport(List<string>orderlist,string role,string ingrediance, string[] ingmass)
         {
             string Dishes = "";
@@ -188,6 +191,7 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
+        // Все показатели для отчёта работы фургона
         private int inreport(string dish,string role)
         {
             string query = $"Select {dish} From Report Where N_Van='{role}'";
@@ -231,6 +235,7 @@ namespace Fuck
             }
 
         }
+        // Добавление нового ингридиента
         public void AddNewItem(string name)
         {
             string query = $"ALTER TABLE Menu ADD {name} INT";
@@ -243,7 +248,7 @@ namespace Fuck
             com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
-
+        // определение стандартного колличества продуктов в фургоне 
         public void Standart(string [] ingmass, int [] count)
         {
             string combind = "";

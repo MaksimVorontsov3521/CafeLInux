@@ -65,7 +65,7 @@ namespace Fuck
             // если неверные login или password
             else
             {
-                MessageBox.Show("not yet");
+                MessageBox.Show("Неверный пароль");
                 sqlConnection.Close();
             }
 

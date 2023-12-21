@@ -83,6 +83,7 @@ namespace Fuck
             OrderSum.Content = allsum;
         }
         public int allsum = 0;
+        // Метод для подсчёта суммы заказа при удалении позиции
         public void delfromsum(string item)
         {
             listOrder.Remove(item.Remove(5));
@@ -192,6 +193,7 @@ namespace Fuck
             Order.SelectedItem = null;
             clearall();           
         }
+        // Метод очистки  
         private void clearall()
         {
             Order.SelectedItem = null;
@@ -259,6 +261,7 @@ namespace Fuck
                 delfromsum(item.ToString());
             }           
         }
+        // Удалить все позиции
         private void DeleteAll_Click(object sender, RoutedEventArgs e)
         {
             clearall();

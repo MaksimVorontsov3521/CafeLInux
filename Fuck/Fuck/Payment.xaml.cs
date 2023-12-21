@@ -38,7 +38,7 @@ namespace Fuck
             InitializeComponent();
             Orders.Show();
         }
-
+        // перенос данных из окна кассира
         public void UPDATE(string query,List<string> listOrder,string OrderSum,int count)
         {
             this.query = query;
@@ -53,6 +53,7 @@ namespace Fuck
             this.count = count;
             Order.ItemsSource = normlist(listOrder);
         }
+        // перенос данных из окна кассира
         public void OneTime(string ingrediance,string [] ingmass, string Id)
         {
             this.ingmass = ingmass;
@@ -62,7 +63,7 @@ namespace Fuck
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             bool check = false;
-            if (Convert.ToInt32(Change.Content) == 0)
+            if (Convert.ToInt32(Change.Content) >= 0)
             {
                 check = true;
                 transaction(check);
@@ -73,8 +74,15 @@ namespace Fuck
             }
             
         }
+        // Выполнение оплаты
         private void transaction(bool check)
         {
+            // Проверка условий 
+            if (OrderSumLabel.Content.ToString()=="0" )
+            {
+                return;
+            }
+            // Проверка условий 
             if (check == true)
             {
                 List<string> listOrder = new List<string>();
@@ -88,7 +96,7 @@ namespace Fuck
                 Orders.NewItem(normlist(listOrder), OrderSum, count);
                 Change.Content = "0";
                 OrderSumLabel.Content = "0";
-                CashSum.Text = null;
+                CashSum.Text = "0";
             }
             else
             { 
@@ -102,7 +110,10 @@ namespace Fuck
             sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);
             sqlConnection.Open();
             CashSum.Text = "0";
+            Change.Content = "0";
+            OrderSumLabel.Content = "0";
         }
+        // переформатирование списка заказов
         public List<string> normlist(List<string> listOrder)
         {
             List<string> normlistOrder = new List<string>();
@@ -116,18 +127,33 @@ namespace Fuck
             }
             return normlistOrder;
         }
-
+        // Оплата картой
         private void Card_Click(object sender, RoutedEventArgs e)
         {
             Bank bank = new Bank();
-            transaction(bank.Account(Convert.ToInt32(OrderSum)));
+            try
+            {
+                transaction(bank.Account(Convert.ToInt32(OrderSum)));
+            }
+            catch
+            { 
+            
+            }
+            
         }
-
+        // Оплата наличными
         private void Pay_Click(object sender, RoutedEventArgs e)
         {
-            Change.Content = Convert.ToInt32(OrderSum) - Convert.ToInt32(CashSum.Text);
+            try
+            {
+                Change.Content = Convert.ToInt32(OrderSum) - Convert.ToInt32(CashSum.Text);
+            }
+            catch
+            { 
+            
+            }         
         }
-
+        // Методы добавления по купюрам
         private void _1_Click(object sender, RoutedEventArgs e)
         {
             CashSum.Text = (Convert.ToInt32(CashSum.Text) + 1).ToString();
@@ -182,14 +208,15 @@ namespace Fuck
         {
             CashSum.Text = (Convert.ToInt32(CashSum.Text) + 5000).ToString();
         }
-
+        // ошибка в заказе
         private void NotOK_Click(object sender, RoutedEventArgs e)
         {
             Change.Content = "0";
             OrderSumLabel.Content = "0";
-            CashSum.Text = null;
+            CashSum.Text = "0";
         }
     }
+    // условный класс Банка для симуляции
     public class Bank
     {
         public Bank()

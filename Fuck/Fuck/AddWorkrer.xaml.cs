@@ -24,6 +24,7 @@ namespace Fuck
     public partial class AddWorkrer : Window
     {
         private OleDbConnection sqlConnection = null;
+        // Класс для добваления работников
         public AddWorkrer()
         {  
             InitializeComponent();
@@ -35,10 +36,11 @@ namespace Fuck
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            // Получение всех контейнеров на форме
             IEnumerable<TextBox> textBoxes = FindVisualChildren<TextBox>(this);
-
+            // проверка, что все поля заполнены
             if (AreTextBoxesFilled())
-            {
+            {// Проверка логина на уникальность
                 if (UniqeLogin() != 0)
                 {
                     MessageBox.Show("Login - занят");
@@ -53,7 +55,8 @@ namespace Fuck
                         $" Values('{Login.Text}','{Password.Text}','{Name.Text}','{Suname.Text}','{Role.SelectedValue}')";
                         OleDbCommand com = new OleDbCommand(query, sqlConnection);
                         com.ExecuteNonQuery();
-                    if (Role.SelectedValue == "cashier")
+                    // Добавление фургона при добавлении кассира
+                    if (Role.SelectedValue.ToString() == "cashier")
                     {
                         AddVan();
                     }
@@ -66,6 +69,7 @@ namespace Fuck
             }
 
         }
+        // Проверка логина на уникальность
         private int UniqeLogin()
         {
             string query = $"Select Login_user From Accounts Where Login_user='{Login.Text}'";
@@ -84,6 +88,7 @@ namespace Fuck
             }
 
         }
+        // Получение всех контейнеров на форме
         private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
@@ -104,40 +109,25 @@ namespace Fuck
                 }
             }
         }
+        // проверка, что все поля заполнены
         private bool AreTextBoxesFilled()
         {
             // Получаем все TextBox внутри контейнера (например, Grid, StackPanel, или Window)
             IEnumerable<TextBox> textBoxes = FindVisualChildren<TextBox>(this);
 
-            // Проверяем, что все TextBox имеют значения
+            
             foreach (TextBox textBox in textBoxes)
             {
                 if (string.IsNullOrWhiteSpace(textBox.Text))
                 {
-                    return false; // Хотя бы один TextBox не заполнен
+                    return false; 
                 }
             }
 
-            return true; // Все TextBox заполнены
+            return true; 
         }
 
-        public List<string> Allaccunts(string somethig, string where,string column, string equals)
-        {
-            using (OleDbCommand com = new OleDbCommand($"Select {somethig} From {where} Where {column}={equals}", sqlConnection))
-            {
-                using (OleDbDataReader reader = com.ExecuteReader())
-                {
-                    List<string> values = new List<string>();
-                    while (reader.Read())
-                    {
-                        string value = reader[somethig] != DBNull.Value ? reader[somethig].ToString() : null;
-                        values.Add(value);
-                    }
-                    return values;
-                }
-            }
-        }
-
+        // Добавление фургона при добавлении кассира
         private void AddVan()
         {
             string query = $"Insert Into Van (Account_van) Values('{Login.Text}')";
