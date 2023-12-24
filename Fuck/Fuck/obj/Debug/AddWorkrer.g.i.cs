@@ -41,7 +41,7 @@ namespace Fuck {
     public partial class AddWorkrer : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 10 "..\..\AddWorkrer.xaml"
+        #line 13 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Login;
         
@@ -49,7 +49,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 11 "..\..\AddWorkrer.xaml"
+        #line 14 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Suname;
         
@@ -57,7 +57,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 12 "..\..\AddWorkrer.xaml"
+        #line 15 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Name;
         
@@ -65,7 +65,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 13 "..\..\AddWorkrer.xaml"
+        #line 16 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Password;
         
@@ -73,7 +73,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 14 "..\..\AddWorkrer.xaml"
+        #line 17 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox Role;
         
@@ -81,7 +81,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 17 "..\..\AddWorkrer.xaml"
+        #line 20 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Label Nam;
         
@@ -89,7 +89,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 20 "..\..\AddWorkrer.xaml"
+        #line 23 "..\..\AddWorkrer.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Add;
         
@@ -147,7 +147,7 @@ namespace Fuck {
             case 7:
             this.Add = ((System.Windows.Controls.Button)(target));
             
-            #line 20 "..\..\AddWorkrer.xaml"
+            #line 23 "..\..\AddWorkrer.xaml"
             this.Add.Click += new System.Windows.RoutedEventHandler(this.Add_Click);
             
             #line default

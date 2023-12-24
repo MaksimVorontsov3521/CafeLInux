@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Storage" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Склад новый.jpg"/>
+        </Grid.Background>
         <Label Content="Ваш ID -" HorizontalAlignment="Left" Height="29" Margin="654,10,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.122,0.507"/>
         <Label x:Name="workerIDlabel" Content="Label" HorizontalAlignment="Left" Height="29" Margin="715,10,0,0" VerticalAlignment="Top" Width="67"/>
         <Button x:Name="Apply" Content="Apply " HorizontalAlignment="Left" Height="25" Margin="492,80,0,0" VerticalAlignment="Top" Width="300" Click="Apply_Click"/>

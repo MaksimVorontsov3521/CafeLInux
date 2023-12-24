@@ -7,12 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Возможна форма регистрации новая.jpg"/>
+        </Grid.Background>
 
-        <Button Content="Button"  Height="94"  Width="217" Click="Button_Click" Margin="69,292,506,33"/>
-        <TextBox x:Name="Login"  Height="35"  TextWrapping="Wrap" Width="217" Margin="50,167,524,217"/>
-        <TextBox x:Name="Password"  Height="35"  TextWrapping="Wrap"  Width="217" Margin="288,167,287,217"/>
-        <Label Content="Login" Height="25" Width="217" Margin="50,119,525,275"/>
-        <Label Content="Password"  Height="25"  Width="217" Margin="305,119,270,275"/>
+        <Button Content="Войти"  Width="220" Click="Button_Click" Margin="484,348,88,46" RenderTransformOrigin="1.827,0.535"/>
+        <TextBox x:Name="Login"  TextWrapping="Wrap" Width="220" Margin="484,182,91,200" Height="25"/>
+        <TextBox x:Name="Password"  TextWrapping="Wrap"  Width="217" Margin="484,274,91,120" Height="25"/>
+        <Label Content="Login" Height="25" Width="220" Margin="484,157,91,237"/>
+        <Label Content="Password"  Width="220" Margin="484,246,91,143" Height="25"/>
 
     </Grid>
 </Window>

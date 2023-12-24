@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Admin" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/админка новая.jpg"/>
+        </Grid.Background>
         <Label Content="You are -" HorizontalAlignment="Left" Margin="659,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="You" Content="" HorizontalAlignment="Left" Height="26" Margin="721,10,0,0" VerticalAlignment="Top" Width="61"/>
         <Button x:Name="AddItem" Content="Добавить" HorizontalAlignment="Left" Height="68" Margin="10,321,0,0" VerticalAlignment="Top" Width="89" Click="AddItem_Click"/>
@@ -21,9 +24,9 @@
         <Button x:Name="OK" Content="OK" HorizontalAlignment="Left" Margin="242,141,0,0" VerticalAlignment="Top" Width="75" Click="OK_Click"/>
         <Label Content="Цена" HorizontalAlignment="Left" Margin="220,18,0,0" VerticalAlignment="Top" Height="25" Width="45" RenderTransformOrigin="-0.412,0.18"/>
         <TextBox x:Name="Price" HorizontalAlignment="Left" Height="25" Margin="265,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
-        <ListBox x:Name="Disheslist" HorizontalAlignment="Left" Height="190" Margin="598,112,0,0" VerticalAlignment="Top" Width="184"/>
-        <Label Content="Удалить" HorizontalAlignment="Left" Margin="598,87,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
-        <Button x:Name="Del" Content="Удалить" HorizontalAlignment="Left" Margin="707,93,0,0" VerticalAlignment="Top" Width="75" Click="Del_Click"/>
+        <ListBox x:Name="Disheslist" HorizontalAlignment="Left" Height="190" Margin="596,179,0,0" VerticalAlignment="Top" Width="184"/>
+        <Label Content="Удалить" HorizontalAlignment="Left" Margin="596,149,0,0" VerticalAlignment="Top" Height="25" Width="120"/>
+        <Button x:Name="Del" Content="Удалить" HorizontalAlignment="Left" Margin="702,152,0,0" VerticalAlignment="Top" Width="75" Click="Del_Click"/>
         <TextBox x:Name="NewItem" HorizontalAlignment="Left" Height="23" Margin="316,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Новый продукт" HorizontalAlignment="Left" Margin="316,295,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="AddNewItem" Content="Button" HorizontalAlignment="Left" Margin="342,349,0,0" VerticalAlignment="Top" Width="75" Click="AddNewItem_Click"/>

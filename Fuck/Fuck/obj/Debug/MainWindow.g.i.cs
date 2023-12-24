@@ -41,7 +41,7 @@ namespace Fuck {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 12 "..\..\MainWindow.xaml"
+        #line 15 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Login;
         
@@ -49,7 +49,7 @@ namespace Fuck {
         #line hidden
         
         
-        #line 13 "..\..\MainWindow.xaml"
+        #line 16 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Password;
         
@@ -96,7 +96,7 @@ namespace Fuck {
             return;
             case 2:
             
-            #line 11 "..\..\MainWindow.xaml"
+            #line 14 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default
