@@ -29,7 +29,10 @@ namespace Fuck
         {  
             InitializeComponent();
             string[] Roles = new string[] { "cashier", "storage", "manager" };
-            sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);
+            string relativePath = "Data\\NormBase.accdb";
+            string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+            string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={fullPath};";
+            sqlConnection = new OleDbConnection(connectionString);
             sqlConnection.Open();
             Role.ItemsSource = Roles;
 

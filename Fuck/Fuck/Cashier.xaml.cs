@@ -55,7 +55,10 @@ namespace Fuck
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);
+            string relativePath = "Data\\NormBase.accdb";
+            string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+            string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={fullPath};";
+            sqlConnection = new OleDbConnection(connectionString);
             sqlConnection.Open();
         }
         // Метод для подсчёта суммы заказа 

@@ -54,3 +54,36 @@ X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\StandardForStorage.baml
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Payment.g.cs
 X:\Desktop\Coffee\Fuck\Fuck\obj\Debug\Payment.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\bin\Debug\Fuck.exe.config
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\bin\Debug\Fuck.exe
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\bin\Debug\Fuck.pdb
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.csproj.AssemblyReference.cache
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\AddWorkrer.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Admin.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Cashier.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\MainWindow.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Manager.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Orders.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Payment.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\StandardForStorage.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Storage.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\App.g.cs
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck_MarkupCompile.cache
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck_MarkupCompile.lref
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\AddWorkrer.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Admin.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Cashier.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\MainWindow.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Manager.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Orders.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Payment.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\StandardForStorage.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Storage.baml
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.g.resources
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.Properties.Resources.resources
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.csproj.GenerateResource.cache
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.csproj.CoreCompileInputs.cache
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.csproj.CopyComplete
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.exe
+X:\Desktop\Новая папка (3)\CafeLInux\Fuck\Fuck\obj\Debug\Fuck.pdb

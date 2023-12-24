@@ -16,7 +16,10 @@ namespace Fuck
         private OleDbConnection sqlConnection = null;
         public DishesFromMenu()
         {
-            sqlConnection = new OleDbConnection(ConfigurationManager.ConnectionStrings["Sqlcon"].ConnectionString);            
+            string relativePath = "Data\\NormBase.accdb";
+            string fullPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+            string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={fullPath};";
+            sqlConnection = new OleDbConnection(connectionString);
             sqlConnection.Open();
         }
         // Заполнение comboBox товарами по категориям
