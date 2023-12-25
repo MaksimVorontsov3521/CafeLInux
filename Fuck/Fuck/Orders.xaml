@@ -8,7 +8,7 @@
         Title="Orders" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Список заказов тест.jpg"/>
+            <ImageBrush ImageSource="Список заказов тест.jpg"/>
         </Grid.Background>
         <ListBox x:Name="ListBox" HorizontalAlignment="Left" Height="300" Margin="20,27,0,0" VerticalAlignment="Top" Width="725"/>
         <Button x:Name="Done" Content="Done" HorizontalAlignment="Left" Height="35" Margin="20,352,0,0" VerticalAlignment="Top" Width="198" Click="Done_Click"/>

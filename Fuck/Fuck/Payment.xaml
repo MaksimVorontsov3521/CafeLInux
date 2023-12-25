@@ -8,7 +8,7 @@
         Title="Payment" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/poverhnost_svetlyj_fon_50523_3840x24002222.jpg"/>
+            <ImageBrush ImageSource="poverhnost_svetlyj_fon_50523_3840x24002222.jpg"/>
         </Grid.Background>
         <Button x:Name="Card" Content="Карта" HorizontalAlignment="Left" Height="81" Margin="27,314,0,0" VerticalAlignment="Top" Width="135" Click="Card_Click"/>
         <ListBox x:Name="Order" HorizontalAlignment="Left" Height="269" Margin="27,20,0,0" VerticalAlignment="Top" Width="330"/>

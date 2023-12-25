@@ -153,5 +153,32 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="добавление работяг новое.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="админка новая.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Оформление заказа новая.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Возможна форма регистрации новая.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="poverhnost_svetlyj_fon_50523_3840x240023333.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Список заказов тест.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="poverhnost_svetlyj_fon_50523_3840x24002222.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="poverhnost_svetlyj_fon_50523_3840x24002.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Склад новый.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("normbase.accdb")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("%d0%a1%d0%ba%d0%bb%d0%b0%d0%b4%20%d0%bd%d0%be%d0%b2%d1%8b%d0%b9.jpg")]
 
 

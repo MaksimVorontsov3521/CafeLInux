@@ -58,7 +58,7 @@ namespace Fuck
                 try
                 {
                     count[selectedID] = Convert.ToInt32(Quantity.Text);
-                    Refresh();
+                    Products.ItemsSource = combine();
                 }
                 catch
                 {
@@ -72,9 +72,14 @@ namespace Fuck
         {
             selectedID = (int)Products.SelectedIndex;
         }
-        private void Refresh()
+        private void Restart()
         {
+            ingrediance = DFM.Ingrediance(DFM.COLUMN_NAME("Menu"));
+            ingmass = ingrediance.Split(',');
             Products.ItemsSource = combine();
+            Products.Items.Refresh();
+            Disheslist.ItemsSource = DFM.AllSomething("Dish", "Menu");
+            Disheslist.Items.Refresh();
         }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
@@ -90,9 +95,18 @@ namespace Fuck
                 MessageBox.Show("Такое блюдо уже существует.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            try
+            {
+                Convert.ToInt32(Price.Text); 
+            }
+            catch
+            { 
+                return;
+            }
             //Выполнение метода
             DFM.AddIteminMenu(Category.SelectedValue.ToString(),Name.Text,Convert.ToInt32(Price.Text),ingmass,count);
             DFM.Addcolumn(Category.SelectedValue.ToString(), Name.Text);
+            Restart();
         }
 
 
@@ -104,6 +118,7 @@ namespace Fuck
             }
                 string item = Disheslist.SelectedItem.ToString();
                 DFM.Deleteitem(item);
+            Restart();
         }
 
         private void AddNewItem_Click(object sender, RoutedEventArgs e)
@@ -112,7 +127,14 @@ namespace Fuck
             {
                 return;
             }
+            if (DFM.UniqeItem(NewItem.Text.ToString())!=0)
+            {
+                MessageBox.Show("Такое уже существует.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return;
+            }
             DFM.AddNewItem(NewItem.Text);
+            Restart();
         }
     }
 }

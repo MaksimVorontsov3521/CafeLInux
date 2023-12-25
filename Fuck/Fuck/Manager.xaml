@@ -8,7 +8,7 @@
         Title="Manager" Height="450" Width="800" Initialized="Window_Initialized">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/poverhnost_svetlyj_fon_50523_3840x240023333.jpg"/>
+            <ImageBrush ImageSource="poverhnost_svetlyj_fon_50523_3840x240023333.jpg"/>
         </Grid.Background>
         <Label x:Name="workerIDlabel" Content="" HorizontalAlignment="Left" Margin="726,10,0,0" VerticalAlignment="Top" Width="56"/>
         <Label Content="You are -" HorizontalAlignment="Left" Margin="664,10,0,0" VerticalAlignment="Top"/>

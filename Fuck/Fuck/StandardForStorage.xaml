@@ -8,7 +8,7 @@
         Title="StandardForStorage" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/poverhnost_svetlyj_fon_50523_3840x24002.jpg"/>
+            <ImageBrush ImageSource="poverhnost_svetlyj_fon_50523_3840x24002.jpg"/>
         </Grid.Background>
         <ListBox x:Name="Products" HorizontalAlignment="Left" Height="346" Margin="10,10,0,0" VerticalAlignment="Top" Width="217" SelectionChanged="Products_SelectionChanged"/>
         <TextBox x:Name="Quantity" HorizontalAlignment="Left" Height="23" Margin="306,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

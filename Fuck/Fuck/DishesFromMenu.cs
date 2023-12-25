@@ -178,6 +178,7 @@ namespace Fuck
             string query = $"Delete From Menu Where Dish like'{item}'";
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
+
         }
         // Сообщение о результатах работы фургона
         public void CashirReport(List<string>orderlist,string role,string ingrediance, string[] ingmass)
@@ -236,8 +237,22 @@ namespace Fuck
                     return values.Count();
                 }
             }
+        }
+        public int UniqeItem(string name)
+        {
+            string query = $"Select {name} From Menu";
+            try
+            {
+                OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            }
+            catch
+            {
+                return 0;
+            }
+            return 1;
 
         }
+
         // Добавление нового ингридиента
         public void AddNewItem(string name)
         {

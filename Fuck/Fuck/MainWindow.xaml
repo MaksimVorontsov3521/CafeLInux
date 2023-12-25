@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Возможна форма регистрации новая.jpg"/>
+            <ImageBrush ImageSource="Возможна форма регистрации новая.jpg"/>
         </Grid.Background>
 
         <Button Content="Войти"  Width="220" Click="Button_Click" Margin="484,348,88,46" RenderTransformOrigin="1.827,0.535"/>
