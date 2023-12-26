@@ -220,6 +220,12 @@ namespace Fuck
             OleDbCommand com = new OleDbCommand(query, sqlConnection);
             com.ExecuteNonQuery();
         }
+        public void Dellcolumn(string name)
+        {
+            string query = $"ALTER TABLE Report DROP COLUMN {name}";
+            OleDbCommand com = new OleDbCommand(query, sqlConnection);
+            com.ExecuteNonQuery();
+        }
         public int UniqeDish(string category, string name)
         {
             string fullname = category + "_" + name;

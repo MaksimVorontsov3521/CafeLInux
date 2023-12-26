@@ -118,6 +118,7 @@ namespace Fuck
             }
                 string item = Disheslist.SelectedItem.ToString();
                 DFM.Deleteitem(item);
+            DFM.Dellcolumn(item);
             Restart();
         }
 
